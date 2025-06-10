@@ -77,7 +77,7 @@ project/
 ├── output/          # Result after split or join
 ├── yml_tool.py      # Terminal version
 ├── yml_gui_tool.py  # GUI version
-├── dist/            # Compiled .exe files (after building)
+├── dist/            # yml_gui_tool.exe files
 └── README.md        # This file
 ```
 
