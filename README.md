@@ -64,7 +64,6 @@ pyinstaller --onefile --noconsole yml_tools_gui.py
 ## 👤 Author | نویسنده
 
 Developed by **Hamed**  
-توسعه داده شده توسط **حامد**
 
 ---
 
