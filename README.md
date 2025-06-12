@@ -1,104 +1,73 @@
 
-# YML Splitter & Merger Tool | ابزار تقسیم و ادغام فایل YML
+# YML Tools by Hamed | ابزار مدیریت فایل‌های YML
 
-This tool helps you split and merge `.yml` files into smaller parts (e.g., every 500 lines) while preserving structure and encoding (UTF-8 with BOM). It supports both command-line and graphical interface (GUI).
-
-این ابزار به شما کمک می‌کند فایل‌های `.yml` را به بخش‌های کوچکتر (مثلاً هر ۵۰۰ خط) تقسیم کرده و مجدد به یکدیگر متصل کنید، در حالی که ساختار و رمزگذاری (`UTF-8 with BOM`) فایل حفظ می‌شود. این ابزار هم نسخه ترمینال دارد و هم رابط گرافیکی (GUI).
-
----
-
-## 🔧 Features | امکانات
-
-- ✅ Split `.yml` files into parts (e.g., 500 lines each)  
-- ✅ Merge parts back into the original file  
-- ✅ Preserves `utf-8-sig` encoding and newline structure  
-- ✅ Command-line version and GUI version (using `tkinter`)  
-- ✅ مناسب برای فایل‌های ترجمه بازی یا پروژه‌های چندزبانه
+A graphical utility for splitting, joining, and analyzing YML translation files.  
+یک ابزار گرافیکی برای تقسیم، اتصال و تحلیل فایل‌های ترجمه YML.
 
 ---
 
-## 🖥️ How to Use (Terminal Version) | نحوه استفاده (نسخه ترمینالی)
+## 🔧 Features | ویژگی‌ها
 
-```bash
-# 1 = Split, 2 = Join
-python yml_tool.py
-```
+### 🧩 Split YML File | تقسیم فایل YML
+- Split large `.yml` files into smaller parts based on a specified number of lines.
+- تقسیم فایل‌های بزرگ YML به بخش‌های کوچکتر با تعداد خط مشخص (پیش‌فرض: ۵۰۰ خط).
 
-Place the original file in the `input` folder. The output files will be saved to the `output` folder.
+### 🔗 Join YML Parts | اتصال فایل‌های جداشده
+- Merge multiple `*_partX.yml` files back into the original structure.
+- اتصال فایل‌های جداشده با پسوند `part` به یک فایل واحد با حفظ ساختار اصلی.
 
-فایل اصلی را در پوشه `input` قرار دهید. فایل‌های خروجی در پوشه `output` ذخیره می‌شوند.
+### 📝 Count Persian Words | شمارش کلمات فارسی
+- Automatically count the number of Persian (Farsi) words and translated lines in `.yml` files.
+- شمارش خودکار کلمات فارسی و خطوط ترجمه‌شده در فایل‌های YML.
 
----
-
-## 🖱️ GUI Version | نسخه گرافیکی
-
-Run the following:
-
-```bash
-python yml_gui_tool.py
-```
-
-Two buttons will appear:
-- **Split YML File**: Choose a file to split into parts
-- **Join YML Parts**: Select one of the part files to merge all parts into one
-
-دو دکمه نمایش داده می‌شود:
-- **Split YML File**: انتخاب فایل برای تقسیم
-- **Join YML Parts**: انتخاب یکی از پارت‌ها برای ادغام کل فایل
+### ⚙ Settings Panel | تنظیمات
+- Choose between encoding formats: `utf-8`, `utf-8-sig (BOM)`
+- انتخاب فرمت کدگذاری فایل‌ها مانند UTF-8 و UTF-8-BOM
+- Set custom line count for splitting.
+- تعیین تعداد خطوط دلخواه برای تقسیم فایل‌ها.
 
 ---
 
-## 🛠️ How to Build .exe | ساخت فایل اجرایی ویندوز
+## 📂 How to Use | نحوه استفاده
 
-Make sure Python and [PyInstaller](https://pyinstaller.org/) are installed.
+1. Run the program (`.exe` or Python file).  
+   برنامه را اجرا کنید (فایل exe یا اسکریپت پایتون).
+2. Use buttons to:
+   - Split a file
+   - Join part files
+   - Count Persian words
+   - Adjust settings
+   از دکمه‌ها برای عملیات تقسیم، اتصال، شمارش کلمات و تنظیمات استفاده کنید.
+3. Input files can be selected manually.
+   فایل‌های ورودی را می‌توانید از طریق پنجره انتخاب فایل انتخاب کنید.
+4. Output files will be saved to an `output` folder.
+   فایل‌های خروجی در پوشه `output` ذخیره می‌شوند.
+
+---
+
+## ✅ Requirements | پیش‌نیازها
+
+- Python 3.x  
+- Libraries used: `tkinter`, `codecs`, `json`, `re`
+
+---
+
+## 💻 Build Executable | ساخت فایل اجرایی
 
 ```bash
 pip install pyinstaller
-
-# For terminal version:
-pyinstaller --onefile yml_tool.py
-
-# For GUI version (no console window):
-pyinstaller --onefile --noconsole yml_gui_tool.py
-```
-
-The `.exe` file will be created in the `dist/` folder.
-
-فایل اجرایی در پوشه `dist/` قرار خواهد گرفت.
-
----
-
-## 📁 File Structure | ساختار پوشه‌ها
-
-```
-project/
-│
-├── input/           # Original file location
-├── output/          # Result after split or join
-├── yml_tool.py      # Terminal version
-├── yml_gui_tool.py  # GUI version
-├── dist/            # yml_gui_tool.exe files
-└── README.md        # This file
+pyinstaller --onefile --noconsole yml_tools_gui.py
 ```
 
 ---
 
-## 📌 Notes | نکات
+## 👤 Author | نویسنده
 
-- This tool supports **UTF-8 with BOM** (`utf-8-sig`) encoding.  
-- Handles newline preservation (`newline=''`) to ensure file structure stays intact.
-- Only `.yml` files are officially supported (but others may work too).
-
-- این ابزار از کدگذاری `UTF-8 with BOM` پشتیبانی می‌کند.
-- ساختار خط‌ها حفظ می‌شود.
-- فقط فایل‌های `.yml` رسماً پشتیبانی می‌شوند.
+Developed by **Hamed**  
+توسعه داده شده توسط **حامد**
 
 ---
 
-## 🧑‍💻 Author
+## 📃 License
 
-Made by **hamed**  
-Created with ❤️ using Python and Tkinter  
-ساخته شده با عشق با پایتون و Tkinter
-
----
+MIT License
